@@ -12,7 +12,7 @@ function App() {
       { path: "crew", element: <Crew /> },
       { path: "technology", element: <Technology /> },
     ],
-    { basename: "https://github.com/Maryam1982/Frontend-Mentor-Space-Tourism" }
+    { basename: "/Frontend-Mentor-Space-Tourism" }
   );
   return <RouterProvider router={router} />;
 }
