@@ -1,0 +1,131 @@
+@use "../base/typography" as typography;
+@use "../base/variables" as variables;
+@use "../abstract/mixins" as mixins;
+
+.header {
+  height: 100vh;
+  width: 100vw;
+  background-image: url(/assets/home/background-home-desktop.jpg);
+  background-repeat: no-repeat;
+  object-fit: cover;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+
+  @include mixins.respond(tablet) {
+    grid-template-columns: 1fr;
+    align-items: center;
+    background-image: url(/assets/home/background-home-tablet.jpg);
+  }
+
+  @include mixins.respond(phone) {
+    background-image: url(/assets/home/background-home-mobile.jpg);
+    background-size: cover;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column: 1/-1;
+    align-self: center;
+    column-gap: variables.$spacing_1600;
+
+    @include mixins.respond(tablet) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  &__text {
+    flex: 0 1 40%;
+
+    @include mixins.respond(tablet) {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  &__sub-heading {
+    @include typography.text_preset_5;
+    text-transform: uppercase;
+
+    @include mixins.respond(phone) {
+      @include typography.text_preset_6-5;
+    }
+  }
+
+  &__heading {
+    @include typography.text_preset_1;
+    text-transform: uppercase;
+
+    @include mixins.respond(tablet) {
+      line-height: 150%;
+    }
+
+    @include mixins.respond(phone) {
+      @include typography.text_preset_2;
+      line-height: 160%;
+    }
+  }
+
+  &__body {
+    @include typography.text_preset_9;
+    color: variables.$color_blue_300;
+
+    @include mixins.respond(tablet) {
+      max-width: 70%;
+    }
+
+    @include mixins.respond(phone) {
+      max-width: 80%;
+    }
+  }
+
+  &__cta-container {
+    flex-basis: content;
+
+    @include mixins.respond(tablet) {
+      margin-top: variables.$spacing_600;
+    }
+  }
+
+  &__cta {
+    @include typography.text_preset_4;
+    text-transform: uppercase;
+    height: 27.2rem;
+    width: 27.2rem;
+    border-radius: 50%;
+    background-color: variables.$color_white;
+    color: variables.$color_blue_900;
+    border: none;
+    position: relative;
+
+    @include mixins.respond(phone) {
+      height: 23rem;
+      width: 23rem;
+    }
+  }
+
+  &__cta:hover {
+    cursor: pointer;
+  }
+
+  &__cta::after {
+    top: 0;
+    left: 0;
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(variables.$color_white, 0.1);
+    transition: all 500ms;
+  }
+
+  &__cta:hover::after {
+    transform: scale(150%);
+  }
+}

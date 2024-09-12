@@ -1,0 +1,185 @@
+@use "../base/typography" as typography;
+@use "../base/variables" as variables;
+@use "../abstract/mixins" as mixins;
+
+.destination {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-image: url(assets/destination/background-destination-desktop.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  &__content {
+    display: grid;
+    width: 77%;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: variables.$spacing_400;
+    justify-items: center;
+    align-self: center;
+    margin-top: variables.$spacing_600;
+
+    @include mixins.respond(desktop) {
+      width: 85%;
+    }
+
+    @include mixins.respond(laptop) {
+      grid-template-columns: 1fr;
+      align-items: center;
+    }
+
+    @include mixins.respond(hide-nav) {
+      width: 100%;
+    }
+  }
+
+  &__intro-heading {
+    grid-column: 1;
+    grid-row: 1;
+    @include typography.text_preset_5;
+    justify-self: start;
+
+    @include mixins.respond(hide-nav) {
+      justify-self: center;
+    }
+
+    @include mixins.respond(change-font-size) {
+      font-size: 2.3rem;
+    }
+
+    @include mixins.respond(phone) {
+      font-size: 2rem;
+    }
+  }
+
+  &__intro-heading span {
+    @include typography.heading_page_number;
+    margin-right: variables.$spacing_300;
+  }
+
+  &__intro-img {
+    grid-column: 1;
+    grid-row: 2;
+    padding: variables.$spacing_800 variables.$spacing_300;
+
+    @include mixins.respond(tablet) {
+      width: 60%;
+    }
+  }
+
+  &__tab-control {
+    grid-column: 2;
+    grid-row: 2;
+    display: flex;
+    flex-direction: column;
+    padding: variables.$spacing_800 variables.$spacing_300;
+
+    @include mixins.respond(laptop) {
+      grid-column: 1;
+      grid-row: 3;
+      align-items: center;
+    }
+  }
+
+  &__tab-nav {
+    display: flex;
+    column-gap: variables.$spacing_400;
+    margin-bottom: variables.$spacing_500;
+  }
+
+  &__tab-nav-item {
+    @include typography.text_preset_8;
+    color: variables.$color_blue_300;
+    padding-bottom: variables.$spacing_150;
+  }
+
+  &__tab-nav-item:link,
+  &__tab-nav-item:active,
+  &__tab-nav-item:visited {
+    text-decoration: none;
+  }
+
+  &__tab-nav-item--active {
+    color: variables.$color_white;
+    border-bottom: 1px solid variables.$color_white;
+  }
+
+  &__tabpanels-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__tabpanel {
+    display: none;
+    flex-direction: column;
+  }
+
+  &__tabpanel--active {
+    display: flex;
+  }
+
+  &__tab-heading {
+    @include typography.text_preset_2;
+    text-transform: uppercase;
+
+    @include mixins.respond(change-font-size) {
+      font-size: 6rem;
+    }
+
+    @include mixins.respond(laptop) {
+      text-align: center;
+    }
+  }
+
+  &__tab-body {
+    @include typography.text_preset_9;
+    color: variables.$color_blue_300;
+    margin-bottom: variables.$spacing_500;
+
+    @include mixins.respond(laptop) {
+      text-align: center;
+    }
+  }
+
+  &__separator {
+    width: 100%;
+    height: 1px;
+    background-color: variables.$color_gray;
+    margin-bottom: variables.$spacing_500;
+    opacity: 0.25;
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    column-gap: variables.$spacing_300;
+
+    @include mixins.respond(hide-nav) {
+      flex-direction: column;
+      row-gap: variables.$spacing_300;
+    }
+  }
+
+  &__info-item {
+    flex-basis: 50%;
+  }
+
+  &__info-item-heading {
+    @include typography.text_preset_7;
+    color: variables.$color_blue_300;
+    margin-bottom: variables.$spacing_150;
+
+    @include mixins.respond(laptop) {
+      text-align: center;
+    }
+  }
+
+  &__info-item-body {
+    @include typography.text_preset_6;
+    text-transform: uppercase;
+  }
+
+  @include mixins.respond(laptop) {
+    text-align: center;
+  }
+}

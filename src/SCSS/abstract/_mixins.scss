@@ -1,0 +1,69 @@
+@use "../base/variables" as variables;
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    @media (max-width: variables.$screen_mobile) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == change-font-size {
+    @media (max-width: variables.$screen_change_heading_size) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == change-layout-tech {
+    @media (max-width: variables.$screen_change_layout_tech) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == hide-nav {
+    @media (max-width: variables.$screen_hide_nav) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == tablet {
+    @media (max-width: variables.$screen_tablet) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == laptop {
+    @media (max-width: variables.$screen_laptop) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == desktop {
+    @media (max-width: variables.$screen_desktop) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == change-heading-size-tech {
+    @media (max-width: variables.$screen_change_heading_size_tech) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == desktop-large {
+    @media (min-width: variables.$screen_desktop) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == desktop-extra-large {
+    @media (min-width: variables.$screen_extra_large) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == desktop-larger {
+    @media (min-width: variables.$screen_desktop_large) {
+      @content;
+    }
+  }
+}
