@@ -5,12 +5,15 @@ import Crew from "./components/Crew";
 import Technology from "./components/Technology";
 
 function App() {
-  const router = createBrowserRouter([
-    { path: "/", element: <Header /> },
-    { path: "destination", element: <Destination /> },
-    { path: "crew", element: <Crew /> },
-    { path: "technology", element: <Technology /> },
-  ]);
+  const router = createBrowserRouter(
+    [
+      { path: "/", element: <Header /> },
+      { path: "destination", element: <Destination /> },
+      { path: "crew", element: <Crew /> },
+      { path: "technology", element: <Technology /> },
+    ],
+    { basename: "https://github.com/Maryam1982/Frontend-Mentor-Space-Tourism" }
+  );
   return <RouterProvider router={router} />;
 }
 
